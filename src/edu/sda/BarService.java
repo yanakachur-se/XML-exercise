@@ -37,4 +37,12 @@ public class BarService {
                 .map(Bar::getName)
                 .forEach(System.out::println);
     }
+
+    void filterByProteinAndReviews(double userProtein, int userReviewNumber){
+        bars.stream()
+                .filter(bar -> bar.getProtein() > userProtein)
+                .filter(bar -> bar.getReviewNumber() == userReviewNumber)
+                .map(Bar::getName)
+                .forEach(System.out::println);
+    }
 }
