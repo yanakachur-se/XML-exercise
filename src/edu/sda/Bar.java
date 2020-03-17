@@ -5,14 +5,14 @@ public class Bar {
     double fett;
     double protein;
     double fiber;
-    String reviewer;
+    int reviewNumber;
 
-    public Bar(String name, double fett, double protein, double fiber, String reviewer) {
+    public Bar(String name, double fett, double protein, double fiber, int reviewNumber) {
         this.name = name;
         this.fett = fett;
         this.protein = protein;
         this.fiber = fiber;
-        this.reviewer = reviewer;
+        this.reviewNumber = reviewNumber;
     }
 
     public String getName() {
@@ -31,7 +31,7 @@ public class Bar {
         return fiber;
     }
 
-    public String getReviewer() {
-        return reviewer;
+    public int getReviewNumber() {
+        return reviewNumber;
     }
 }

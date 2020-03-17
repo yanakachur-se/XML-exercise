@@ -32,7 +32,7 @@ public class Parser {
                 double fett = 0;
                 double protein = 0;
                 double fiber = 0;
-                String reviewer = "";
+                int reviewNumber = 0;
                 String name = "";
                 if (barNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element barElement = (Element) barNode;
@@ -52,12 +52,12 @@ public class Parser {
                                     fiber = parseDouble(charact.getTextContent());
                                     break;
                                 case "review":
-                                    NodeList review = charact.getChildNodes();
-                                    for (int k = 0; k < review.getLength(); k++) {
-                                        Node reviewNode = review.item(k);
+                                    NodeList reviews = charact.getChildNodes();
+                                    int count = reviews.getLength();
+                                    for (int k = 0; k < reviews.getLength(); k++) {
+                                        Node reviewNode = reviews.item(k);
                                         if (reviewNode.getNodeType() == Node.ELEMENT_NODE) {
-                                            Element reviewElement = (Element) reviewNode;
-                                            reviewer = reviewElement.getAttribute("personID");
+                                            reviewNumber++;
                                         }
                                     }
                                     break;
@@ -65,7 +65,7 @@ public class Parser {
                         }
                     }
                 }
-                Bar bar = new Bar(name, fett, protein, fiber, reviewer);
+                Bar bar = new Bar(name, fett, protein, fiber, reviewNumber);
                 bars.add(bar);
             }
         } catch (Exception e) {
